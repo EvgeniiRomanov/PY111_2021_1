@@ -16,6 +16,7 @@ class PriorityQueue:
         Operation that add element to the end of the queue
 
         :param elem: element to be added
+        :param priority: element priority
         :return: Nothing
         """
         item = {
