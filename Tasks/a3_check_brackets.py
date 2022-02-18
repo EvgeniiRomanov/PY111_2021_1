@@ -5,6 +5,7 @@ def check_brackets(brackets_row: str) -> bool:
     :param brackets_row: input string to be checked
     :return: True if valid, False otherwise
     """
+
     brackets_open = "("
     brackets_closed = ")"
 
