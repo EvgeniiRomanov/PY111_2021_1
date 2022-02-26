@@ -39,18 +39,18 @@ def fib_iterative(n: int) -> int:
 
 def fib_generator(n: int) -> Iterator[int]:
 
-    # a, b = 0, 1
-    # while n > 0:
-    #     yield a
-    #     a, b = b, a + b
-    #     n -= 1
-
     a, b = 0, 1
-    yield a
-    yield b
-    for i in range(0, n):
+    while n > 0:
         a, b = b, a + b
         yield a
+        n -= 1
+
+    # a, b = 0, 1
+    # yield a
+    # yield b
+    # for i in range(0, n):
+    #     a, b = b, a + b
+    #     yield a
 
 print(fib_recursive(8))
 print(fib_iterative(8))
