@@ -15,7 +15,7 @@ class MyTestCase(unittest.TestCase):
             ('C', 'F'),
             ('E', 'G'),
         ])
-        result = dfs.dfs(graph, 'A')
+        result = dfs.bfs(graph, 'A')
         self.assertEqual(
             7,
             len(result),
