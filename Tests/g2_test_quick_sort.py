@@ -9,7 +9,7 @@ class MyTestCase(unittest.TestCase):
         arr = [random.randint(-100, 100) for _ in range(30)]
         self.assertEqual(
             sorted(arr),
-            sorter.sort(arr)
+            sorter.sort(arr, 0, len(arr) - 1)
         )
 
 
