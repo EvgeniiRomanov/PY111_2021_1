@@ -21,7 +21,7 @@ for i in range(len(list_day)):    # с вложенным даст O(N**2)
 if len(set(new_list)) != len(new_list):
      print("Не хватает одной ракеты")
 else:
-     print("Хватает одной ракеты")
+     print("Хватает одной ракеты ")
 
 print(new_list)
 
