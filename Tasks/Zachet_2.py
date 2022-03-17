@@ -87,8 +87,32 @@ def merge_sort(container: List[int]) -> List[int]:
     return container
 
 
+def my_sort_1(container: List[int]) -> List[int]:
+    """
+    Sort input container with quick sort
+    :param end:
+    :param start:
+    :param container: container of elements to be sorted
+    :return: container sorted in ascending order
+    """
+    tmp_list = [0] * 26
+    new_list = []
+
+    for value in container:
+        tmp_list[value] += 1
+
+    #print(tmp_list)
+
+    for index, value in enumerate(tmp_list):
+        if value > 0:
+            new_list += [index] * value
+    #print(new_list)
+    return new_list
+
+
 if __name__ == '__main__':
     arr = [random.randint(13, 25) for _ in range(1000000)]
+    #print(arr)
 
     start = perf_counter()
     my_sort(arr)
@@ -100,4 +124,8 @@ if __name__ == '__main__':
 
     start = perf_counter()
     arr.sort()
-    print(f"List sort: {perf_counter() - start}")
+    print(f"Inner List sort: {perf_counter() - start}")
+
+    start = perf_counter()
+    my_sort_1(arr)
+    print(f"Count sort: {perf_counter() - start}")
