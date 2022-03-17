@@ -9,5 +9,20 @@ def binary_search(elem: int, arr: Sequence) -> Optional[int]:
     :param arr: array where element is to be found
     :return: Index of element if it's presented in the arr, None otherwise
     """
-    print(elem, arr)
-    return None
+
+    min_index = 0
+    max_index = len(arr) - 1
+
+    while max_index >= min_index:
+        middle_index = (max_index + min_index) // 2
+        value = arr[middle_index]
+        if value == elem:
+            return middle_index
+        if value > elem:
+            max_index = middle_index - 1
+        if value < elem:
+            min_index = middle_index + 1
+
+    #return None
+
+#print(binary_search(6, [1,4,3,6,8, 10, 13, 15, 16, 19, 22]))

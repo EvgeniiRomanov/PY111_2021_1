@@ -1,3 +1,5 @@
+from typing import Iterator
+
 def fib_recursive(n: int) -> int:
     """
     Calculate n-th number of Fibonacci sequence using recursive algorithm
@@ -5,8 +7,17 @@ def fib_recursive(n: int) -> int:
     :param n: number of item
     :return: Fibonacci number
     """
-    print(n)
-    return 0
+    if n < 0:
+        raise ValueError
+
+    if n in (0, 1):
+        return n
+
+    # if n in (1, 2):     # это когда мы 0 заведомо не рассматриваем
+    #     return 1
+    return fib_recursive(n-1) + fib_recursive(n-2)
+
+
 
 
 def fib_iterative(n: int) -> int:
@@ -16,5 +27,31 @@ def fib_iterative(n: int) -> int:
     :param n: number of item
     :return: Fibonacci number
     """
-    print(n)
-    return 0
+    if n < 0:
+        raise ValueError
+
+    a, b = 0, 1
+    for _ in range(0, n):
+        a, b = b, a + b
+
+    return a
+
+
+def fib_generator(n: int) -> Iterator[int]:
+
+    a, b = 0, 1
+    while n > 0:
+        a, b = b, a + b
+        yield a
+        n -= 1
+
+    # a, b = 0, 1
+    # yield a
+    # yield b
+    # for i in range(0, n):
+    #     a, b = b, a + b
+    #     yield a
+
+print(fib_recursive(8))
+print(fib_iterative(8))
+print(list(fib_generator(8)))

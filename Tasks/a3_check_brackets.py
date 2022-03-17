@@ -1,4 +1,4 @@
-def check_brackets(brackets_row: str) -> bool:
+#def check_brackets(brackets_row: str) -> bool:
     """
     Check whether input string is a valid bracket sequence
     Valid examples: "", "()", "()()(()())", invalid: "(", ")", ")("
@@ -37,22 +37,21 @@ def check_brackets(brackets_row: str) -> bool:
     # return True
 
 # -------------------- Вариант просто стеком ------------------------
+
+def check_brackets(brackets_row: str) -> bool:
     brackets_open = "("
     brackets_closed = ")"
-
     stack = []                  # стэк для входа-выхода скобок
 
     for index, elem in enumerate(brackets_row):
         if elem in brackets_open:
             stack.append(elem)
-            #print(f"Вход: {len(stack)}")
+
         if elem in brackets_closed:
-            #print(f"Выходят: {len(stack)}")
             if len(stack) == 0:
                 return False
             stack.pop()
 
-        #print(f"Прошли шаг - длина: {len(stack)}")
         if index == len(brackets_row) - 1:
             if len(stack) > 0:
                 return False
