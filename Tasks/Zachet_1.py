@@ -1,7 +1,7 @@
-#from utils import benchmark
-
-
-#@benchmark(10)
+# from utils import benchmark
+#
+#
+# @benchmark(10)
 def rocket_rent(list_day: list) -> bool:
     """
     Функция вычисляет возможность аренды в заданные интервалы времени одной ракеты

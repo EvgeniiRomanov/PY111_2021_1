@@ -10,8 +10,8 @@ import g2_quick_sort
 
 def count_sort_1(container: List[int]) -> List[int]:
     """
-    Sort input container [13, 26] with count sort
-    :param container: list of in elements to be sorted
+    Sort list of 10000000 integers in range [13, 26] with count sort
+    :param container: list of in elements to be sorted in range [13, 26]
     :return: container sorted in ascending order
     """
     tmp_list = [0] * 26
@@ -29,8 +29,8 @@ def count_sort_1(container: List[int]) -> List[int]:
 
 def count_sort_2(container: List[int]) -> List[int]:
     """
-    Sort input container [13, 26] with count sort
-    :param container: list of int elements to be sorted
+    Sort list of 10000000 integers in range [13, 26] with count sort
+    :param container: list of in elements to be sorted in range [13, 26]
     :return: container sorted in ascending order
     """
     tmp_list = [elem for elem in range(13, 26)]
@@ -44,15 +44,15 @@ def count_sort_2(container: List[int]) -> List[int]:
 
 
 if __name__ == '__main__':
-    arr = [random.randint(13, 25) for _ in range(100)]
+    arr = [random.randint(13, 25) for _ in range(1000000)]
     # arr = [random.randint(13, 25) for _ in range(1000000)]
 
     # Bubble sort
-    arr2 = arr.copy()
-    start = perf_counter()
-    g0_bubble_sort.sort(arr2)
-    print(f"Bubble sort: {perf_counter() - start}")
-    arr2.clear()
+    # arr2 = arr.copy()
+    # start = perf_counter()
+    # g0_bubble_sort.sort(arr2)
+    # print(f"Bubble sort: {perf_counter() - start}")
+    # arr2.clear()
 
     # Quick sort
     arr2 = arr.copy()
@@ -88,3 +88,12 @@ if __name__ == '__main__':
     count_sort_2(arr2)
     print(f"Count sort 2: {perf_counter() - start}")
     arr2.clear()
+
+
+    # Count_sort_3
+    #
+    # arr2 = arr.copy()
+    # start = perf_counter()
+    # count_sort_3(arr2)
+    # print(f"Count sort 3: {perf_counter() - start}")
+    # arr2.clear()
