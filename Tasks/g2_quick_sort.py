@@ -125,8 +125,8 @@ def sort(container: List[int]) -> List[int]:
         return container
 
 
-arr = [randint(-10000, 10000) for _ in range(10000)]
-
-start = perf_counter()
-sort(arr)
-print(perf_counter() - start)
+# arr = [randint(-10000, 10000) for _ in range(10000)]
+#
+# start = perf_counter()
+# sort(arr)
+# print(perf_counter() - start)

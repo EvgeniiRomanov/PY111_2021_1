@@ -1,8 +1,8 @@
 from typing import List
 from random import randint
-from Tasks.utils import benchmark
+#from Tasks.utils import benchmark
 
-@benchmark(10)
+#@benchmark(10)
 def sort(container: List[int]) -> List[int]:
     """
     Sort input container with bubble sort
@@ -18,8 +18,8 @@ def sort(container: List[int]) -> List[int]:
                 container[j], container[j+1] = container[j+1], container[j]
     return container
 
-# if __name__ == '__main__':
+if __name__ == '__main__':
 #     print(sort([-5, 1, 4, 2, 10, 8, 0]))
 
-arr = [randint(-1000, 1000) for _ in range(1000)]
-sort(arr)
+    arr = [randint(0, 10) for _ in range(1000)]
+    print(sort(arr))

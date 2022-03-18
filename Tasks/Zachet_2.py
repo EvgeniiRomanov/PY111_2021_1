@@ -1,131 +1,90 @@
 # Дано: массив из 10**6 целых чисел, каждое из которых лежит на отрезке [13, 25].
 # Задача: отсортировать массив наиболее эффективным способом
 import random
-#from utils import benchmark
 from time import perf_counter
 from typing import List
+import g0_bubble_sort
+import g1_merge_sort
+import g2_quick_sort
 
 
-#@benchmark(10)
-def my_sort(container: List[int]) -> List[int]:
+def count_sort_1(container: List[int]) -> List[int]:
     """
-    Sort input container with quick sort
-    :param end:
-    :param start:
-    :param container: container of elements to be sorted
-    :return: container sorted in ascending order
-    """
-    if len(container) > 1:
-        pivot = container[len(container) // 2]
-
-        less = []
-        greater = []
-        equal = []
-
-        for i in container:
-            if i < pivot:
-                less.append(i)
-            elif i > pivot:
-                greater.append(i)
-            else:
-                equal.append(i)
-        return my_sort(less) + equal + my_sort(greater)
-    else:
-        return container
-
-
-def merge_sort(container: List[int]) -> List[int]:
-    """
-    Sort input container with merge sort
-
-    :param container: container of elements to be sorted
-    :return: container sorted in ascending order
-    """
-
-    if len(container) > 1:
-
-        # Ищем середину
-        mid = len(container) // 2
-
-        # Делим массив
-        L = container[:mid]
-
-        # на две части
-        R = container[mid:]
-
-        # Сортируем левую часть
-        merge_sort(L)
-
-        # Сортируем правую часть
-        merge_sort(R)
-
-        i = j = k = 0
-
-        # Копируем данные из временных массивов
-        while i < len(L) and j < len(R):
-            if L[i] < R[j]:
-                container[k] = L[i]
-                i += 1
-            else:
-                container[k] = R[j]
-                j += 1
-            k += 1
-
-        # Проверяем где должен находится элемент
-        # из левой части
-        while i < len(L):
-            container[k] = L[i]
-            i += 1
-            k += 1
-
-        # из правой
-        while j < len(R):
-            container[k] = R[j]
-            j += 1
-            k += 1
-
-    return container
-
-
-def my_sort_1(container: List[int]) -> List[int]:
-    """
-    Sort input container with quick sort
-    :param end:
-    :param start:
-    :param container: container of elements to be sorted
+    Sort input container [13, 26] with count sort
+    :param container: list of in elements to be sorted
     :return: container sorted in ascending order
     """
     tmp_list = [0] * 26
-    new_list = []
+    result_list = []
 
     for value in container:
         tmp_list[value] += 1
 
-    #print(tmp_list)
-
     for index, value in enumerate(tmp_list):
         if value > 0:
-            new_list += [index] * value
-    #print(new_list)
-    return new_list
+            result_list += [index] * value
+
+    return result_list
+
+
+def count_sort_2(container: List[int]) -> List[int]:
+    """
+    Sort input container [13, 26] with count sort
+    :param container: list of int elements to be sorted
+    :return: container sorted in ascending order
+    """
+    tmp_list = [elem for elem in range(13, 26)]
+    result_list = []
+
+    for elem in tmp_list:
+        k = container.count(elem)
+        result_list += [elem] * k
+
+    return result_list
 
 
 if __name__ == '__main__':
-    arr = [random.randint(13, 25) for _ in range(1000000)]
-    #print(arr)
+    arr = [random.randint(13, 25) for _ in range(100)]
+    # arr = [random.randint(13, 25) for _ in range(1000000)]
 
+    # Bubble sort
+    arr2 = arr.copy()
     start = perf_counter()
-    my_sort(arr)
+    g0_bubble_sort.sort(arr2)
+    print(f"Bubble sort: {perf_counter() - start}")
+    arr2.clear()
+
+    # Quick sort
+    arr2 = arr.copy()
+    start = perf_counter()
+    g2_quick_sort.sort(arr2)
     print(f"Quick sort: {perf_counter() - start}")
+    arr2.clear()
 
+    # Merge sort
+    arr2 = arr.copy()
     start = perf_counter()
-    merge_sort(arr)
+    g1_merge_sort.sort(arr2)
     print(f"Merge sort: {perf_counter() - start}")
+    arr2.clear()
 
+    # Inner List sort
+    arr2 = arr.copy()
     start = perf_counter()
-    arr.sort()
+    arr2.sort()
     print(f"Inner List sort: {perf_counter() - start}")
+    arr2.clear()
 
+    # Count_sort_1
+    arr2 = arr.copy()
     start = perf_counter()
-    my_sort_1(arr)
-    print(f"Count sort: {perf_counter() - start}")
+    count_sort_1(arr2)
+    print(f"Count sort 1: {perf_counter() - start}")
+    arr2.clear()
+
+    # Count_sort_2
+    arr2 = arr.copy()
+    start = perf_counter()
+    count_sort_2(arr2)
+    print(f"Count sort 2: {perf_counter() - start}")
+    arr2.clear()
